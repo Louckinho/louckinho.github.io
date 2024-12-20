@@ -57,7 +57,7 @@ h1 {
 @media (max-width: 600px) {
     .container {
         padding: 30px;
-        width: 90%;
+        width: 80%;
     }
 
     h1 {
