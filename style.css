@@ -10,7 +10,7 @@ body {
     height: 100vh;
     color: #edf1f1;
     flex-direction: column;
-    overflow: hidden;
+    overflow: auto;
 }
 
 /* Container principal */
@@ -22,8 +22,7 @@ body {
     text-align: center;
     max-width: 600px;
     width: 100%;
-    margin-bottom: 30px;
-    
+    margin-bottom: 30px;    
 }
 
 /* Título */
@@ -54,7 +53,7 @@ h1 {
 }
 
 /* Estilos para pequenos ajustes de tela */
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     .container {
         padding: 30px;
         width: 80%;
@@ -67,6 +66,7 @@ h1 {
     .value {
         font-size: 36px;
     }
+    
 }
 
 /* Estilos para ícones e botões */
