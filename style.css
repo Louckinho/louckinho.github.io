@@ -54,7 +54,7 @@ h1 {
 }
 
 /* Estilos para pequenos ajustes de tela */
-@media (max-width: 600px) {
+@media (max-width: 500px) {
     .container {
         padding: 30px;
         width: 80%;
