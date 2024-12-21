@@ -1,6 +1,6 @@
 // Defina seu Canal ID e a API Key de leitura aqui
 const channelID = '2780400';  // Seu Channel ID do ThingSpeak
-const apiKey = '0926RM08CJ87IFA4';  // Sua chave de leitura do ThingSpeak
+const apiKey = '8DC8LR28ZEH5HHVG';  // Sua chave de leitura do ThingSpeak
 
 // Função para buscar os dados do ThingSpeak
 function obterTemperatura() {
