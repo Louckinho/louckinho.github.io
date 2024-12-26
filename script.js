@@ -45,7 +45,7 @@ function obterHumidade(identificador, canalID, campo) {
 // Atualizações automáticas
 setInterval(() => obterTemperatura('Q1', 2780400, 'field1'), 30000);
 setInterval(() => obterTemperatura('Q2', 2780400, 'field2'), 30000);
-setInterval(() => obterHumidade('Q3', 1234567, 'field3'), 30000);
+setInterval(() => obterHumidade('Q3', 2780400, 'field3'), 30000);
 
 // Atualização inicial
 obterTemperatura('Q1', 2780400, 'field1');

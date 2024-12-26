@@ -27,18 +27,21 @@ h1 {
 }
 
 /* Cartões de dados */
-.card, .grafico-card {
+.card,
+.grafico-card {
     background-color: #34495e;
     border-radius: 15px;
-    padding: 20px;
-    margin: 10px;
+    padding: 30px;
+    margin: 15px;
     text-align: center;
-    flex: 1 1 30%; /* Flexível para ajustar ao tamanho da tela */
+    flex: 1 1 30%;
+    /* Flexível para ajustar ao tamanho da tela */
     max-width: 300px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.card h2, .grafico-card h3 {
+.card h2,
+.grafico-card h3 {
     font-size: 24px;
     margin-bottom: 10px;
     color: #ecf0f1;
@@ -88,8 +91,11 @@ iframe {
 
 /* Responsividade */
 @media (max-width: 768px) {
-    .card, .grafico-card {
-        flex: 1 1 100%; /* Coloca um embaixo do outro em telas menores */
+
+    .card,
+    .grafico-card {
+        flex: 1 1 100%;
+        /* Coloca um embaixo do outro em telas menores */
     }
 }
 
@@ -101,14 +107,16 @@ iframe {
 }
 
 .card:nth-child(1) .icon {
-    color: #3498db; /* Azul para Temperatura Q1 */
+    color: #3498db;
+    /* Azul para Temperatura Q1 */
 }
 
 .card:nth-child(2) .icon {
-    color: #e74c3c; /* Vermelho para Temperatura Q2 */
+    color: #e74c3c;
+    /* Vermelho para Temperatura Q2 */
 }
 
 .card:nth-child(3) .icon {
-    color: #1abc9c; /* Verde para Umidade Q3 */
+    color: #1abc9c;
+    /* Verde para Umidade Q3 */
 }
-
