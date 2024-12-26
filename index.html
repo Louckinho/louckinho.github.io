@@ -13,21 +13,60 @@
 
 <body>
 
-    <div class="container">
-        <i class="icon">👾🌡️👽👾</i>
-        <h1>Temperatura Atual Q1</h1>
-        <div id="temperatura" class="value">Carregando...</div>
-        <div id="timestamp" class="timestamp">Aguardando atualização...</div>
-        <div id="loading" class="loading">Atualizando...</div>
-        <button class="btn-atualizar" onclick="obterTemperatura()">Atualizar</button>
-    </div>
+    <div class="main-content">
 
-    <!-- Container do gráfico -->
-    <div class="grafico-container">
-        <h2>Gráfico de Temperatura</h2>
-        <iframe
-            src="https://thingspeak.com/channels/2780400/charts/1?bgcolor=%23F5F5F5&color=%2332CD32&dynamic=true&results=60&title=Temperatura+Quarto+PC&type=line&xaxis=Horario&yaxis=Temperatura&width=600&height=300">
-        </iframe>
+        <!-- Q1 Container -->
+        <div class="container">
+            <i class="icon">👾🌡️👽👾</i>
+            <h1>Temperatura Atual Q1</h1>
+            <div id="temperaturaQ1" class="value">Carregando...</div>
+            <div id="timestampQ1" class="timestamp">Aguardando atualização...</div>
+            <div id="loadingQ1" class="loading">Atualizando...</div>
+            <button class="btn-atualizar" onclick="obterTemperatura('Q1', 2780400, 'field1')">Atualizar</button>
+        </div>
+
+        <div class="grafico-container">
+            <h2>Gráfico de Temperatura Q1</h2>
+            <iframe
+                src="https://thingspeak.com/channels/2780400/charts/1?bgcolor=%23F5F5F5&color=%2332CD32&dynamic=true&results=60&title=Temperatura+Q1&type=line&xaxis=Horario&yaxis=Temperatura&width=600&height=300">
+            </iframe>
+        </div>
+
+        <!-- Q2 Container -->
+        <div class="container">
+            <i class="icon">👾🌡️👽👾</i>
+            <h1>Temperatura Atual Q2</h1>
+            <div id="temperaturaQ2" class="value">Carregando...</div>
+            <div id="timestampQ2" class="timestamp">Aguardando atualização...</div>
+            <div id="loadingQ2" class="loading">Atualizando...</div>
+            <button class="btn-atualizar" onclick="obterTemperatura('Q2', 2780400, 'field2')">Atualizar</button>
+        </div>
+
+        <div class="grafico-container">
+            <h2>Gráfico de Temperatura Q2</h2>
+            <iframe
+                src="https://thingspeak.com/channels/2780400/charts/2?bgcolor=%23F5F5F5&color=%2332CD32&dynamic=true&results=60&title=Temperatura+Q2&type=line&xaxis=Horario&yaxis=Temperatura&width=600&height=300">
+            </iframe>
+        </div>
+        
+        <!-- Q3 Container -->
+        <div class="container">
+            <i class="icon">💧</i>
+            <h1>Humidade Atual</h1>
+            <div id="humidadeQ3" class="value">Carregando...</div>
+            <div id="timestampQ3" class="timestamp">Aguardando atualização...</div>
+            <div id="loadingQ3" class="loading">Atualizando...</div>
+            <button class="btn-atualizar" onclick="obterHumidade('Q3', 1234567, 'field3')">Atualizar</button>
+        </div>
+        
+        <div class="grafico-container">
+            <h2>Gráfico de Humidade</h2>
+            <iframe
+                src="https://thingspeak.com/channels/2780400/charts/3?bgcolor=%23F5F5F5&color=%2332CD32&dynamic=true&results=60&title=Humidade&type=line&xaxis=Horario&yaxis=Humidade&width=600&height=300">
+            </iframe>
+        </div>
+        
+        
 
     </div>
 

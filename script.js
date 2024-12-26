@@ -1,47 +1,53 @@
-// Defina seu Canal ID e a API Key de leitura aqui
-const channelID = '2780400';  // Seu Channel ID do ThingSpeak
+// API Key de leitura do ThingSpeak
 const apiKey = '8DC8LR28ZEH5HHVG';
 
-// Função para buscar os dados do ThingSpeak
-function obterTemperatura() {
+// Função genérica para buscar dados do ThingSpeak
+function obterDado(identificador, canalID, campo, tipo) {
+    const url = `https://api.thingspeak.com/channels/${canalID}/feeds.json?api_key=${apiKey}&results=1`;
+
     // Mostrar indicador de carregamento
-    $('#loading').show();
-    $('#temperatura').text('Carregando...');
+    $(`#loading${identificador}`).show();
+    $(`#${tipo}${identificador}`).text('Carregando...');
 
-    const url = `https://api.thingspeak.com/channels/${channelID}/feeds.json?api_key=${apiKey}&results=1`;
-
+    // Requisitar dados do ThingSpeak
     $.get(url, function (data) {
         const lastEntry = data.feeds[0];
-        let temperatura = parseFloat(lastEntry.field1); // Converter para número
-        let timestamp = lastEntry.created_at; // Hora da última atualização em UTC
+        if (!lastEntry || !lastEntry[campo]) {
+            $(`#${tipo}${identificador}`).text('Sem dados disponíveis.');
+            $(`#loading${identificador}`).hide();
+            return;
+        }
 
-        // Formatar a temperatura para 2 casas decimais
-        temperatura = temperatura.toFixed(2);
+        // Processar os dados
+        let valor = parseFloat(lastEntry[campo]).toFixed(2);
+        let timestamp = new Date(lastEntry.created_at).toLocaleString('pt-BR', { hour12: false });
 
-        // Converter timestamp de UTC para hora de Brasília
-        let dataUtc = new Date(timestamp);
-        dataUtc.setHours(dataUtc.getHours() - 0); // Ajuste para horário de Brasília deixe 0
-
-        // Formatar data e hora no formato "DD/MM/YYYY HH:MM:SS"
-        const options = {
-            weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
-            hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
-        };
-        const dataBrasilia = dataUtc.toLocaleString('pt-BR', options);
-
-        // Atualize o HTML com os dados recebidos
-        $('#temperatura').text(temperatura + " °C");
-        $('#timestamp').text('Última atualização: ' + dataBrasilia);
-
-        // Esconder o indicador de carregamento após os dados serem atualizados
-        $('#loading').hide();
+        // Atualizar o HTML
+        $(`#${tipo}${identificador}`).text(`${valor} ${tipo === 'humidade' ? '%' : '°C'}`);
+        $(`#timestamp${identificador}`).text(`Última atualização: ${timestamp}`);
+        $(`#loading${identificador}`).hide();
     }).fail(function () {
-        // Caso ocorra algum erro, esconder o indicador de carregamento e mostrar mensagem de erro
-        $('#loading').hide();
-        $('#temperatura').text('Erro ao carregar dados.');
+        // Em caso de erro, exibir mensagem
+        $(`#loading${identificador}`).hide();
+        $(`#${tipo}${identificador}`).text('Erro ao carregar dados.');
     });
 }
 
-// Atualizar a temperatura a cada 30 segundos
-setInterval(obterTemperatura, 30000); // Atualiza a cada 30 segundos
-obterTemperatura(); // Chama a função pela primeira vez ao carregar a página
+// Funções específicas para Temperatura e Humidade
+function obterTemperatura(identificador, canalID, campo) {
+    obterDado(identificador, canalID, campo, 'temperatura');
+}
+
+function obterHumidade(identificador, canalID, campo) {
+    obterDado(identificador, canalID, campo, 'humidade');
+}
+
+// Atualizações automáticas
+setInterval(() => obterTemperatura('Q1', 2780400, 'field1'), 30000);
+setInterval(() => obterTemperatura('Q2', 2780400, 'field2'), 30000);
+setInterval(() => obterHumidade('Q3', 1234567, 'field3'), 30000);
+
+// Atualização inicial
+obterTemperatura('Q1', 2780400, 'field1');
+obterTemperatura('Q2', 2780400, 'field2');
+obterHumidade('Q3', 2780400, 'field3');
