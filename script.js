@@ -1,6 +1,6 @@
 // Defina seu Canal ID e a API Key de leitura aqui
 const channelID = '2780400';  // Seu Channel ID do ThingSpeak
-const apiKey = '0926RM08CJ87IFA4';  // Sua chave de leitura do ThingSpeak
+const apiKey = '8DC8LR28ZEH5HHVG';
 
 // Função para buscar os dados do ThingSpeak
 function obterTemperatura() {
@@ -20,7 +20,7 @@ function obterTemperatura() {
 
         // Converter timestamp de UTC para hora de Brasília
         let dataUtc = new Date(timestamp);
-        dataUtc.setHours(dataUtc.getHours() - 3); // Ajuste para horário de Brasília
+        dataUtc.setHours(dataUtc.getHours() - 0); // Ajuste para horário de Brasília deixe 0
 
         // Formatar data e hora no formato "DD/MM/YYYY HH:MM:SS"
         const options = {
