@@ -1,91 +1,65 @@
-/* Estilo global */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #2c3e50;
-    margin: 0;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
     color: #edf1f1;
-    overflow: auto;
+    margin: 0;
+    padding: 20px;
 }
+
 .main-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
-}
-.container,
-.grafico-container {
-    margin-bottom: 20px; /* Espaçamento vertical */
-}
-
-
-/* Container principal */
-.container {
-    background-color: #34495e;
-    padding: 10px 40px;
-    border-radius: 30px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     text-align: center;
-    max-width: 600px;
-    width: 100%;
-    margin-bottom: 30px;
 }
 
-/* Título */
 h1 {
-    font-size: 32px;
+    font-size: 36px;
+    margin-bottom: 20px;
     color: #ecf0f1;
+}
+
+/* Layout em linha */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     margin-bottom: 20px;
 }
 
-/* Exibição da temperatura */
+/* Cartões de dados */
+.card, .grafico-card {
+    background-color: #34495e;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    flex: 1 1 30%; /* Flexível para ajustar ao tamanho da tela */
+    max-width: 300px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card h2, .grafico-card h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #ecf0f1;
+}
+
 .value {
     font-size: 48px;
     font-weight: bold;
-    color: #e74c3c;
-    margin-top: 20px;
-}
-
-/* Exibição do timestamp */
-.timestamp {
-    font-size: 16px;
-    color: #7f8c8d;
     margin-top: 10px;
 }
 
-/* Animações suaves para a atualização */
-#temperatura {
-    transition: all 0.3s ease-in-out;
+.timestamp {
+    font-size: 14px;
+    color: #95a5a6;
+    margin-top: 5px;
 }
 
-/* Estilos para pequenos ajustes de tela */
-@media (max-width: 600px) {
-    .container {
-        padding: 20px;
-        width: 80%;
-    }
-
-    h1 {
-        font-size: 26px;
-    }
-
-    .value {
-        font-size: 38px;
-    }
-
-}
-
-/* Estilos para ícones e botões */
-.icon {
-    font-size: 60px;
-    color: #3498db;
-    margin-bottom: 20px;
+.loading {
+    font-size: 16px;
+    color: #2980b9;
+    margin-top: 10px;
 }
 
 /* Botão de atualizar */
@@ -93,43 +67,48 @@ h1 {
     background-color: #3498db;
     color: white;
     padding: 10px 20px;
-    border-radius: 5px;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    margin-top: 10px;
     transition: background-color 0.3s ease;
-    margin-top: 20px;
 }
 
 .btn-atualizar:hover {
     background-color: #32739e;
 }
 
-/* Indicador de carregamento */
-.loading {
-    display: none;
-    font-size: 18px;
-    color: #2980b9;
-    margin-top: 10px;
-}
-
-/* Estilos do gráfico */
-.grafico-container {
-    background-color: #34495e;
-    padding: 10px;
-    border-radius: 30px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    width: 100%;
-    max-width: 600px;
-    margin-top: 10px;
-    padding-bottom: 20px;
-}
-
+/* Gráficos */
 iframe {
     width: 100%;
-    height: 300px;
+    height: 250px;
     border: none;
-    border-radius: 30px;
-    min-height: 300px;
+    border-radius: 15px;
 }
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .card, .grafico-card {
+        flex: 1 1 100%; /* Coloca um embaixo do outro em telas menores */
+    }
+}
+
+/* Ícones */
+.icon {
+    font-size: 48px;
+    color: #f1c40f;
+    margin-bottom: 10px;
+}
+
+.card:nth-child(1) .icon {
+    color: #3498db; /* Azul para Temperatura Q1 */
+}
+
+.card:nth-child(2) .icon {
+    color: #e74c3c; /* Vermelho para Temperatura Q2 */
+}
+
+.card:nth-child(3) .icon {
+    color: #1abc9c; /* Verde para Umidade Q3 */
+}
+
