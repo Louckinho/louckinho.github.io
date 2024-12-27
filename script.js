@@ -19,7 +19,7 @@ function obterDado(identificador, canalID, campo, tipo) {
         }
 
         // Processar os dados
-        let valor = parseFloat(lastEntry[campo]).toFixed(2);
+        let valor = parseFloat(lastEntry[campo]).toFixed(1);
         let timestamp = new Date(lastEntry.created_at).toLocaleString('pt-BR', { hour12: false });
 
         // Atualizar o HTML
