@@ -51,3 +51,20 @@ setInterval(() => obterHumidade('Q3', 2780400, 'field3'), 30000);
 obterTemperatura('Q1', 2780400, 'field1');
 obterTemperatura('Q2', 2780400, 'field2');
 obterHumidade('Q3', 2780400, 'field3');
+
+// Calcula o delta automaticamente após atualizar as temperaturas
+setTimeout(() => {
+    calcularDelta();
+}, 1000);
+
+function calcularDelta() {
+    const tempQ1 = parseFloat(document.getElementById("temperaturaQ1").textContent) || 0;
+    const tempQ2 = parseFloat(document.getElementById("temperaturaQ2").textContent) || 0;
+
+    const delta = (tempQ2 - tempQ1).toFixed(1);
+    document.getElementById("deltaTemperatura").textContent = `${delta} °C`;
+
+    const now = new Date();
+    document.getElementById("timestampDelta").textContent = `Atualizado em: ${now.toLocaleTimeString()}`;
+    document.getElementById("loadingDelta").style.display = "none";
+}
