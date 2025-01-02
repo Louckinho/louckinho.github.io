@@ -57,6 +57,8 @@ setTimeout(() => {
     calcularDelta();
 }, 1000);
 
+setInterval(calcularDelta, 30000);
+
 function calcularDelta() {
     const tempQ1 = parseFloat(document.getElementById("temperaturaQ1").textContent) || 0;
     const tempQ2 = parseFloat(document.getElementById("temperaturaQ2").textContent) || 0;
