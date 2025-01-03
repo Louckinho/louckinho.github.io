@@ -80,4 +80,4 @@ setTimeout(() => {
 
 setInterval(() => {
     calcularDelta();
-}, 60000);
+}, 4000);
