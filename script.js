@@ -80,4 +80,9 @@ setTimeout(() => {
 
 setInterval(() => {
     calcularDelta();
-}, 4000);
+}, 30000);
+
+// Define o intervalo de tempo em milissegundos (10 minutos = 600.000 ms)
+setInterval(function() {
+    location.reload(); // Recarrega a página
+}, 600000); // 600.000 milissegundos = 10 minutos
