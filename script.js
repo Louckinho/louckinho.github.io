@@ -80,7 +80,7 @@ setTimeout(() => {
 
 setInterval(() => {
     calcularDelta();
-}, 30000);
+}, 4000);
 
 // Define o intervalo de tempo em milissegundos (10 minutos = 600.000 ms)
 setInterval(function() {
